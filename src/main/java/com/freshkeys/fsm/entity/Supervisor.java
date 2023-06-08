@@ -17,10 +17,10 @@ import lombok.NoArgsConstructor;
 public class Supervisor {
     @Id
     @GeneratedValue
-    private String id;
+    private int id;
 
-    private String FirstName;
-    private String LastName;
-    private String Email;
-    private String PhoneNumber;
+    private String firstname;
+    private String lastname;
+    private String email;
+    private String phonenumber;
 }

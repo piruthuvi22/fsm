@@ -19,12 +19,12 @@ public class Customer {
     @GeneratedValue
     private int id;
 
-    private String firstName;
+    private String firstname;
 
-    private String lastName;
+    private String lastname;
     private String email;
 
-    private String phoneNumber;
+    private String phonenumber;
 
-    private String  Address;
+    private String  address;
 }

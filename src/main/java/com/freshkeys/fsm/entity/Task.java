@@ -22,5 +22,5 @@ public class Task {
     private String title;
     private String description;
 
-    private String Address;
+    private String address;
 }
