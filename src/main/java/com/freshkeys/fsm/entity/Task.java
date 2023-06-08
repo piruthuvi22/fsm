@@ -13,14 +13,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "Tasks")
-
 public class Task {
     @Id
     @GeneratedValue
-    private String id;
-
+    private int id;
+    private int customer_id;
     private String title;
     private String description;
+    private String date;
+    private String address;
 
-    private String Address;
 }
