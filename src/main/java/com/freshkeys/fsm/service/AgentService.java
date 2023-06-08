@@ -16,11 +16,7 @@ public class AgentService {
         return repository.save(agent);
     }
 
-    public List<Agent> saveAgent(List<Agent> agent){
-        return repository.saveAll(agent);
-    }
-
-    public List<Agent> getAgent(){
+    public List<Agent> getAgents(){
         return repository.findAll();
     }
 
@@ -28,10 +24,10 @@ public class AgentService {
         return repository.findById(id).orElse(null);
     }
 
-    public Agent getAgentByFirstName(String FirstName){return repository.findByFirstName(FirstName);}
+    public Agent getAgentByFirstName(String FirstName){return repository.findByFirstname(FirstName);}
 
     public Agent getAgentByLastName(String LastName){
-        return repository.findByLastName(LastName);
+        return repository.findByLastname(LastName);
     }
 
     public Agent getAgentByEmail(String Email){
@@ -39,11 +35,8 @@ public class AgentService {
     }
 
     public Agent getAgentByPhoneNumber(String PhoneNumber){
-        return repository.findByPhoneNumber(PhoneNumber);
+        return repository.findByPhonenumber(PhoneNumber);
     }
-
-
-
 
     public String deleteAgent(int id){
         repository.deleteById(id);
@@ -53,10 +46,10 @@ public class AgentService {
     public Agent updateAgent(Agent agent){
 
         Agent existingAgent = repository.findById(agent.getId()).orElse(null);
-        existingAgent.setFirstName(agent.getFirstName());
-        existingAgent.setLastName(agent.getLastName());
+        existingAgent.setFirstname(agent.getFirstname());
+        existingAgent.setLastname(agent.getLastname());
         existingAgent.setEmail(agent.getEmail());
-        existingAgent.setPhoneNumber(agent.getPhoneNumber());
+        existingAgent.setPhonenumber(agent.getPhonenumber());
 
 
         return repository.save(existingAgent);

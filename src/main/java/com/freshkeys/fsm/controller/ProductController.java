@@ -18,11 +18,6 @@ public class ProductController {
         return service.saveProduct(product);
     }
 
-    @PostMapping("/add-products")
-    public List<Product> addProducts(@RequestBody List<Product> products) {
-        return service.saveProducts(products);
-    }
-
     @GetMapping("/get-products")
     public List<Product> getAllProducts() {
         return service.getProducts();

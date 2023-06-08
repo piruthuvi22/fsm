@@ -17,30 +17,25 @@ public class AgentController {
         return service.saveAgent(agent);
     }
 
-    @PostMapping("/add-agent")
-    public List<Agent> addAgent(@RequestBody List<Agent> agent) {
-        return service.saveAgent(agent);
-    }
-
-    @GetMapping("/get-agent")
-    public List<Agent> getAllAgent() {
-        return service.getAgent();
+    @GetMapping("/get-agents")
+    public List<Agent> getAllAgents() {
+        return service.getAgents();
     }
 
     @GetMapping("/get-agent-by-id/{id}")
     public Agent getAgentById(@PathVariable int id) {return service.getAgentById(id);}
 
-    @GetMapping("/get-agent-by-firstname/{firstname}")
-    public Agent getAgentByFirstName(@PathVariable String FirstName) {return service.getAgentByFirstName(FirstName);}
+    @GetMapping("/get-agent-by-firstname/{firstName}")
+    public Agent getAgentByFirstName(@PathVariable String firstName) {return service.getAgentByFirstName(firstName);}
 
-    @GetMapping("/get-agent-by-lastname/{lastname}")
-    public Agent getAgentByLastName(@PathVariable String LastName) {return service.getAgentByLastName(LastName);}
+    @GetMapping("/get-agent-by-lastname/{lastName}")
+    public Agent getAgentByLastName(@PathVariable String lastName) {return service.getAgentByLastName(lastName);}
 
     @GetMapping("/get-agent-by-email/{email}")
-    public Agent getAgentByEmail(@PathVariable String Email) {return service.getAgentByEmail(Email);}
+    public Agent getAgentByEmail(@PathVariable String email) {return service.getAgentByEmail(email);}
 
-    @GetMapping("/get-agent-by-phonenumber/{phonenumber}")
-    public Agent getAgentByPhoneNumber(@PathVariable String PhoneNumber) {return service.getAgentByPhoneNumber(PhoneNumber);}
+    @GetMapping("/get-agent-by-phonenumber/{phoneNumber}")
+    public Agent getAgentByPhoneNumber(@PathVariable String phoneNumber) {return service.getAgentByPhoneNumber(phoneNumber);}
 
     @PutMapping("/update-agent")
     public Agent updateAgent(@RequestBody Agent agent) {

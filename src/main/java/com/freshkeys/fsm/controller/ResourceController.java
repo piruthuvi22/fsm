@@ -18,12 +18,7 @@ public class ResourceController {
         return service.saveResource(resource);
     }
 
-    @PostMapping("/add-resource")
-    public List<Resource> addResource(@RequestBody List<Resource> resource) {
-        return service.saveResource(resource);
-    }
-
-    @GetMapping("/get-resource")
+    @GetMapping("/get-resources")
     public List<Resource> getAllResource() {
         return service.getResource();
     }

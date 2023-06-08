@@ -15,7 +15,8 @@ import java.util.Date;
 public class TaskUpdate {
     @Id
     @GeneratedValue
-    private String updateid;
+    private int id;
+
     private int task_id;
     private String title;
     private Date date;
