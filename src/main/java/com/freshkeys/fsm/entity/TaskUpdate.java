@@ -18,11 +18,18 @@ public class TaskUpdate {
     private int id;
 
     private int task_id;
-    private String title;
+    private String message;
+    @Enumerated(EnumType.STRING)
+    private TaskStatusEnum status;
     private Date date;
 
 
 }
 
 
-
+enum TaskStatusEnum {
+    PENDING,
+    REJECTED,
+    PROGRESS,
+    COMPLETED
+}
