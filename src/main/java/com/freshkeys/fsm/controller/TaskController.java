@@ -1,5 +1,6 @@
 package com.freshkeys.fsm.controller;
 
+import com.freshkeys.fsm.ResponseModel.TaskWithCustomerName;
 import com.freshkeys.fsm.entity.Task;
 import com.freshkeys.fsm.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,11 @@ public class TaskController {
         return service.getTasks();
     }
 
+    @GetMapping("/get-tasks/{agentId}")
+    public List<Task> getAllTasksOfAgent(@PathVariable int agentId ) {
+        return service.getAllTasksOfAgent(agentId);
+    }
+
     @GetMapping("/get-task-by-id/{id}")
     public Task getTaskById(@PathVariable int id) {
         return service.getTaskById(id);
@@ -39,4 +45,9 @@ public class TaskController {
         return service.deleteTask(id);
     }
 
+    @GetMapping("/task-with-customer-name")
+    public ResponseEntity<List<TaskWithCustomerName>> getTasksWithCustomerName() {
+        List<TaskWithCustomerName> tasks = service.getTasksWithCustomerName();
+        return ResponseEntity.ok().body(tasks);
+    }
 }

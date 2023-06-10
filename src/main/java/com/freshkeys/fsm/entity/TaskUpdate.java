@@ -17,7 +17,7 @@ public class TaskUpdate {
     @GeneratedValue
     private int id;
 
-    private int task_id;
+    private int taskId;
     private String message;
     @Enumerated(EnumType.STRING)
     private TaskStatusEnum status;

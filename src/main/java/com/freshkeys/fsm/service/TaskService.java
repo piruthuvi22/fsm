@@ -1,5 +1,6 @@
 package com.freshkeys.fsm.service;
 
+import com.freshkeys.fsm.ResponseModel.TaskWithCustomerName;
 import com.freshkeys.fsm.entity.Task;
 import com.freshkeys.fsm.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ public class TaskService {
     private TaskRepository repository;
 
     public ResponseEntity<?> saveTask(Task task) {
-        if (task.getCustomer_id() == 0) {
+        if (task.getCustomerId() == 0) {
             String errorMessage = "Customer id is required";
             return ResponseEntity.badRequest().body(errorMessage);
         } else {
@@ -51,5 +52,14 @@ public class TaskService {
             String errorMessage = "Task with id " + task.getId() + " not found";
             return ResponseEntity.badRequest().body(errorMessage);
         }
+    }
+
+    public List<TaskWithCustomerName> getTasksWithCustomerName() {
+        return repository.findTasksWithCustomerName();
+    }
+
+
+    public List<Task> getAllTasksOfAgent(int agentId) {
+        return repository.findByAgentId(agentId);
     }
 }
