@@ -1,5 +1,6 @@
 package com.freshkeys.fsm.entity;
 
+import com.freshkeys.fsm.enums.TaskStatusEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,10 +15,11 @@ public class Task {
     @Id
     @GeneratedValue
     private int id;
-    private int customerId;
+    private String customerPhoneNumber;
 
-    @Column(columnDefinition = "integer default null")
+    @Column(columnDefinition = "integer default 0")
     private int agentId;
+
     private String title;
 
     @Column(columnDefinition = "TEXT")
@@ -25,4 +27,8 @@ public class Task {
     private String date;
     private String address;
 
+    @Enumerated(EnumType.STRING)
+    private TaskStatusEnum status;
+
 }
+

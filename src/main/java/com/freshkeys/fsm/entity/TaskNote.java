@@ -11,25 +11,24 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "TaskUpdates")
-public class TaskUpdate {
+@Table(name = "TaskNotes")
+public class TaskNote {
     @Id
     @GeneratedValue
     private int id;
 
     private int taskId;
     private String message;
-    @Enumerated(EnumType.STRING)
-    private TaskStatusEnum status;
-    private Date date;
+
+    private String date;
 
 
 }
 
 
-enum TaskStatusEnum {
-    PENDING,
-    REJECTED,
-    PROGRESS,
-    COMPLETED
-}
+//enum TaskStatusEnum {
+//    PENDING,
+//    REJECTED,
+//    PROGRESS,
+//    COMPLETED
+//}

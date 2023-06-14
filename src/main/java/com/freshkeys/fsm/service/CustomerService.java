@@ -20,10 +20,9 @@ public class CustomerService {
         return repository.findAll();
     }
 
-    public Customer getCustomerByPhoneNumber(String phonenumber){
-        return repository.findByPhonenumber(phonenumber);
+    public Customer findCustomerByPhoneNumber(String phoneNumber) {
+        return repository.findByPhonenumber(phoneNumber);
     }
-
     public Customer getCustomerById(int id){
         return repository.findById(id).orElse(null);
     }
