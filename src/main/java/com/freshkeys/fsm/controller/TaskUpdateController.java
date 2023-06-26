@@ -1,10 +1,8 @@
 package com.freshkeys.fsm.controller;
 
-import com.freshkeys.fsm.ResponseModel.TaskModel;
-import com.freshkeys.fsm.ResponseModel.TaskStatusModel;
-import com.freshkeys.fsm.entity.Task;
-import com.freshkeys.fsm.entity.TaskNote;
-import com.freshkeys.fsm.service.TaskNoteService;
+import com.freshkeys.fsm.entity.TaskUpdate;
+import com.freshkeys.fsm.enums.TaskUpdateEnum;
+import com.freshkeys.fsm.service.TaskUpdateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,19 +11,19 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*") // allow all origins
-public class TaskNoteController {
+public class TaskUpdateController {
     @Autowired
-    private TaskNoteService service;
+    private TaskUpdateService service;
 
-    @GetMapping("/get-task-notes/{taskId}")
-    public List<TaskNote> getTaskNotes(@PathVariable int taskId) {
-        return service.getTaskNotes(taskId);
+    @GetMapping("/get-task-notes/{taskId}/{type}")
+    public List<TaskUpdate> getTaskNotes(@PathVariable int taskId, @PathVariable TaskUpdateEnum type) {
+        return service.getTaskNotes(taskId,type);
     }
 
 
     // ADD TASK NOTE
     @PostMapping("/add-task-note")
-    public ResponseEntity<TaskNote> addTask(@RequestBody TaskNote taskNote) {
+    public ResponseEntity<TaskUpdate> addTask(@RequestBody TaskUpdate taskNote) {
         System.out.println("taskNote: " + taskNote.toString() );
 
         return service.saveTaskNote(taskNote);
@@ -33,7 +31,7 @@ public class TaskNoteController {
 
     // UPDATE TASK NOTE
     @PutMapping("/update-task-note")
-    public ResponseEntity<?> updateTaskNote(@RequestBody TaskNote taskNote) {
+    public ResponseEntity<?> updateTaskNote(@RequestBody TaskUpdate taskNote) {
         return service.updateTaskNote(taskNote);
     }
 

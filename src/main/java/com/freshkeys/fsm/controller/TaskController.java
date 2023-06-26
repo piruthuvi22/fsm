@@ -55,8 +55,8 @@ public class TaskController {
 
 
     @GetMapping("/get-tasks/{agentId}")
-    public ResponseEntity<List<TaskModel>> getTasksOfAgents(@PathVariable int agentId) {
-        List<TaskModel> tasks = service.getAllTasksOfAgent(agentId);
+    public ResponseEntity<List<?>> getTasksOfAgents(@PathVariable int agentId) {
+        List<?> tasks = service.getAllTasksOfAgent(agentId);
         return ResponseEntity.ok().body(tasks);
     }
 

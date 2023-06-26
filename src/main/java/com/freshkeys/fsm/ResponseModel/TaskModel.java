@@ -14,7 +14,7 @@ public class TaskModel {
     private String description;
     private String date;
     private String address;
-    private String phoneNumber;
+    private String customerPhoneNumber;
     private String customerName;
     private TaskStatusEnum status;
 

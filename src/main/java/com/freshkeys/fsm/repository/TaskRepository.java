@@ -17,8 +17,8 @@ public interface TaskRepository extends JpaRepository<Task, Integer> {
     @Query("SELECT new com.freshkeys.fsm.ResponseModel.TaskModel(t.id, t.title, t.description, t.date, t.address,c.phonenumber, c.firstname || ' ' || c.lastname,t.status) " + "FROM Task t JOIN Customer c ON t.customerPhoneNumber = c.phonenumber")
     List<TaskModel> findTasksWithCustomerName();
 
-    @Query("SELECT new com.freshkeys.fsm.ResponseModel.TaskModel(t.id, t.title, t.description, t.date, t.address,c.phonenumber, c.firstname || ' ' || c.lastname, t.status)" + "FROM Task t JOIN Customer c ON t.customerPhoneNumber = c.phonenumber WHERE t.agentId = :agentId")
-    List<TaskModel> getAllTasksOfAgent(@Param("agentId") int agentId);
+    @Query("SELECT new com.freshkeys.fsm.ResponseModel.TaskModel(t.id, t.title, t.description, t.date, t.address,t.customerPhoneNumber, c.firstname || ' ' || c.lastname, t.status)" + "FROM Task t JOIN Customer c ON t.customerPhoneNumber = c.phonenumber WHERE t.agentId = :agentId")
+    List<?> getAllTasksOfAgent(@Param("agentId") int agentId);
 
     @Query("SELECT new com.freshkeys.fsm.ResponseModel.TaskModel(t.id, t.title, t.description, t.date, t.address,c.phonenumber, c.firstname || ' ' || c.lastname, t.status)" + "FROM Task t JOIN Customer c ON t.customerPhoneNumber = c.phonenumber WHERE t.agentId = :agentId AND t.status = 'PROGRESS'")
     List<TaskModel> getProgressedTasksOfAgent(@Param("agentId") int agentId);

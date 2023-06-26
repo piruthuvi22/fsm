@@ -16,7 +16,7 @@ public class Customer {
     @GeneratedValue
     private int id;
 
-@Column(unique = true)
+    @Column(unique = true)
     private String phonenumber;
 
     private String firstname;

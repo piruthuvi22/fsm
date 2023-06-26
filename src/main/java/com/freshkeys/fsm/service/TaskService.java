@@ -60,7 +60,9 @@ public class TaskService {
     }
 
 
-    public List<TaskModel> getAllTasksOfAgent(int agentId) {
+    public List<?> getAllTasksOfAgent(int agentId) {
+        System.out.println("================");
+
         return repository.getAllTasksOfAgent(agentId);
     }
 

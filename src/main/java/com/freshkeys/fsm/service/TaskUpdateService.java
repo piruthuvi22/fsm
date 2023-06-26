@@ -1,11 +1,8 @@
 package com.freshkeys.fsm.service;
 
-import com.freshkeys.fsm.ResponseModel.TaskModel;
-import com.freshkeys.fsm.ResponseModel.TaskStatusModel;
-import com.freshkeys.fsm.entity.Task;
-import com.freshkeys.fsm.entity.TaskNote;
-import com.freshkeys.fsm.enums.TaskStatusEnum;
-import com.freshkeys.fsm.repository.TaskNoteRepository;
+import com.freshkeys.fsm.entity.TaskUpdate;
+import com.freshkeys.fsm.enums.TaskUpdateEnum;
+import com.freshkeys.fsm.repository.TaskUpdateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -13,23 +10,23 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class TaskNoteService {
+public class TaskUpdateService {
     @Autowired
-    private TaskNoteRepository repository;
+    private TaskUpdateRepository repository;
 
     // GET TASK NOTES
-    public List<TaskNote> getTaskNotes(int taskId) {
-        return repository.findAllByTaskId(taskId);
+    public List<TaskUpdate> getTaskNotes(int taskId, TaskUpdateEnum type) {
+        return repository.findAllByTaskIdAndType(taskId, type);
     }
 
     // ADD TASK NOTE
-    public ResponseEntity<TaskNote> saveTaskNote(TaskNote taskNote) {
+    public ResponseEntity<TaskUpdate> saveTaskNote(TaskUpdate taskNote) {
         return ResponseEntity.ok(repository.save(taskNote));
     }
 
-    public ResponseEntity<?> updateTaskNote(TaskNote taskNote) {
+    public ResponseEntity<?> updateTaskNote(TaskUpdate taskNote) {
 
-        TaskNote existingTaskNote = repository.findById(taskNote.getId()).orElse(null);
+        TaskUpdate existingTaskNote = repository.findById(taskNote.getId()).orElse(null);
         if (existingTaskNote != null) {
             return ResponseEntity.ok(repository.save(taskNote));
         } else {
@@ -40,7 +37,7 @@ public class TaskNoteService {
     }
 
     public ResponseEntity<?> deleteTaskNote(int id) {
-        TaskNote existingTaskNote = repository.findById(id).orElse(null);
+        TaskUpdate existingTaskNote = repository.findById(id).orElse(null);
         if (existingTaskNote == null) {
             return ResponseEntity.ofNullable("Task note with id " + id + " not found");
         }
